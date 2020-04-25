@@ -2,6 +2,8 @@
 -- add modes: debug and release
 add_rules("mode.debug", "mode.release")
 
+set_targetdir("../build")
+
 -- add target
 target("curl_t0")
 
@@ -22,6 +24,9 @@ target("curl_t0")
     -- add files
     add_files("src/*.cpp")
 
+    after_build(function()
+        os.rm("build")
+    end)
 --
 -- FAQ
 --
